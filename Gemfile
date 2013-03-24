@@ -18,6 +18,7 @@ gem 'faye'
 
 group :development do
   gem 'thin'
+  gem 'foreman'
 end
 
 # To use ActiveModel has_secure_password
