@@ -8,13 +8,29 @@
       $('<p></p>').html(data.username + ': ' + data.msg).appendTo('#chat-room');
     });
 
+    // Our own private channel
+    var private_subscription = client.subscribe("/messages/private/#{session[:username]}", function(data) {
+      $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat-room');
+    });
+
     // Handle form submissions and post messages to Faye
     $('#new-message-form').submit(function() {
       // Publish the message to the public channel
-      client.publish('/messages/public', {
-        username: "#{session[:username]}",
-        msg: $('#message').val()
-      });
+
+      // Is it a private message?
+      if (matches = $('#message').val().match(/@(.+) (.+)/)) {
+        client.publish('/messages/private/' + matches[1], {
+          username: "#{session[:username]}",
+          msg: matches[2]
+        });
+      }
+      else {
+        // It's a public message
+        client.publish('/messages/public', {
+          username: "#{session[:username]}",
+          msg: $('#message').val()
+        });
+      }
 
       // Clear the message box
       $('#message').val('');
