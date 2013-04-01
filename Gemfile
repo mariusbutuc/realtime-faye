@@ -15,10 +15,12 @@ end
 gem 'faye'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'private_pub'
 
 group :development do
   gem 'thin'
   gem 'foreman'
+  gem 'pry'
 end
 
 # To use ActiveModel has_secure_password

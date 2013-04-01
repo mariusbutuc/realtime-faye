@@ -1,48 +1,22 @@
+= subscribe_to "/messages/public"
+= subscribe_to "/messages/private/#{session[:username]}"
+
 :javascript
   $(function() {
-    // Create a new client to connect to Faye
-    var client = new Faye.Client('http://localhost:9292/faye');
-
     // Subscribe to the public channel
-    var public_subscription = client.subscribe('/messages/public', function(data) {
-      $('<p></p>').html(data.username + ': ' + data.msg).appendTo('#chat-room');
+    PrivatePub.subscribe('/messages/public', function(data) {
+      $('<p></p>').html(data.username + ': ' + data.msg).appendTo('#chat_room');
     });
 
     // Our own private channel
-    var private_subscription = client.subscribe("/messages/private/#{session[:username]}", function(data) {
-      $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat-room');
-    });
-
-    // Handle form submissions and post messages to Faye
-    $('#new-message-form').submit(function() {
-      // Publish the message to the public channel
-
-      // Is it a private message?
-      if (matches = $('#message').val().match(/@(.+) (.+)/)) {
-        client.publish('/messages/private/' + matches[1], {
-          username: "#{session[:username]}",
-          msg: matches[2]
-        });
-      }
-      else {
-        // It's a public message
-        client.publish('/messages/public', {
-          username: "#{session[:username]}",
-          msg: $('#message').val()
-        });
-      }
-
-      // Clear the message box
-      $('#message').val('');
-
-      // Don't actually submit the form, otherwise the page will refresh.
-      return false;
+    PrivatePub.subscribe("/messages/private/#{session[:username]}", function(data) {
+      $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat_room');
     });
   });
 
-.chat-container
-  #chat-room
+.chat_container
+  #chat_room
     %p.alert= "Welcome to the chatroom #{session[:username]}!"
-  %form#new-message-form
-    %input#message{ type: 'text', name: 'message' }
-    %input{ type: 'submit', value: 'Send' }
+  = form_tag new_message_path, remote: true do
+    = text_field_tag :message
+    = submit_tag 'Send', disable_with: 'Sending…'

@@ -1,1 +1,1 @@
-pubsub: rackup faye.ru -E production -s thin
+pubsub: rackup private_pub.ru -s thin -E production
