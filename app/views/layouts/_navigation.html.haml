@@ -1,0 +1,5 @@
+= link_to 'Write the Scene', root_path, class: 'brand'
+- if session[:username]
+  %ul.nav.pull-right
+    %li
+      %a= "Welcome to the chatroom, #{session[:username]}!"

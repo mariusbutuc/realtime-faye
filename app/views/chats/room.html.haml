@@ -16,7 +16,20 @@
 
 .chat_container
   #chat_room
-    %p.alert= "Welcome to the chatroom #{session[:username]}!"
+
   = form_tag new_message_path, remote: true do
-    = text_field_tag :message
-    = submit_tag 'Send', disable_with: 'Sending…'
+    .input-prepend.input-append
+      .btn-group
+        %button.btn.dropdown-toggle{ 'data-toggle' => 'dropdown' }
+          Choose&hellip;
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %a Say
+          %li
+            %a Narrative
+          %li
+            %a Slugline
+
+      = text_field_tag :message, nil, placeholder: 'What do you say?', class: 'span7'
+      = submit_tag 'Send', disable_with: 'Sending…', class: 'btn'
