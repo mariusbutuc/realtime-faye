@@ -1,0 +1,29 @@
+= subscribe_to "/scenes/#{@scene.id}"
+
+:javascript
+  $(function() {
+    // Subscribe to the public channel
+    PrivatePub.subscribe("/scenes/#{@scene.id}", function(data) {
+      $('<p></p>').html(data.username + ': ' + data.msg).appendTo('#scene');
+    });
+  });
+
+.scene_container
+  #scene
+
+  = form_tag new_message_path, remote: true do
+    .input-prepend.input-append
+      .btn-group
+        %button.btn.dropdown-toggle{ 'data-toggle' => 'dropdown' }
+          Choose&hellip;
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %a Say
+          %li
+            %a Narrative
+          %li
+            %a Slugline
+
+      = text_field_tag :message, nil, placeholder: 'What do you say?', class: 'span7'
+      = submit_tag 'Send', disable_with: 'Sending…', class: 'btn'

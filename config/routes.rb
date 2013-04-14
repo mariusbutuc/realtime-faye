@@ -8,6 +8,8 @@ RealtimeFaye::Application.routes.draw do
   get  '/chatroom'    => 'chats#room',        as: :chat
   post '/new_message' => 'chats#new_message', as: :new_message
 
+  resources :scenes
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
