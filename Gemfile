@@ -19,9 +19,10 @@ gem 'jquery-rails'
 gem 'private_pub'
 
 group :development do
-  gem 'thin'
+  gem 'annotate'
   gem 'foreman'
   gem 'pry'
+  gem 'thin'
 end
 
 # To use ActiveModel has_secure_password

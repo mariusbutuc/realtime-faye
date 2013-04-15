@@ -1,14 +1,11 @@
 RealtimeFaye::Application.routes.draw do
   # get "sessions/new"
   # get "sessions/create"
-  get  '/login' => 'sessions#new',            as: :login
-  post '/login' => 'sessions#create',         as: :login
-
-  # get "chats/room"
-  get  '/chatroom'    => 'chats#room',        as: :chat
-  post '/new_message' => 'chats#new_message', as: :new_message
+  get  '/start' => 'sessions#new',            as: :start
+  post '/start' => 'sessions#create',         as: :start
 
   resources :scenes
+  post '/scenes/:id/new_line' => 'scenes#new_line', as: :new_line
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,7 +56,7 @@ RealtimeFaye::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'chats#room'
+  root to: 'scenes#index'
 
   # See how all your routes lay out with "rake routes"
 
