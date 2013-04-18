@@ -15,15 +15,21 @@ ActiveRecord::Schema.define(:version => 20130414153637) do
 
   create_table "characters", :force => true do |t|
     t.string   "nickname"
+    t.integer  "scene_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  add_index "characters", ["scene_id"], :name => "index_characters_on_scene_id"
+
   create_table "lines", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "character_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "lines", ["character_id"], :name => "index_lines_on_character_id"
 
   create_table "scenes", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -33,8 +39,11 @@ ActiveRecord::Schema.define(:version => 20130414153637) do
   create_table "starters", :force => true do |t|
     t.text     "content"
     t.string   "title"
+    t.integer  "scene_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "starters", ["scene_id"], :name => "index_starters_on_scene_id"
 
 end

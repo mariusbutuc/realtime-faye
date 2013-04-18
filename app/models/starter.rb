@@ -4,9 +4,10 @@
 #
 #  id         :integer          not null, primary key
 #  content    :text
+#  title      :string(255)
+#  scene_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  title      :string(255)
 #
 
 class Starter < ActiveRecord::Base

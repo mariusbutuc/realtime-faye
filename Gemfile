@@ -25,10 +25,6 @@ group :development do
   gem 'thin'
 end
 
-group :production do
-  gem 'pry-remote'
-end
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
