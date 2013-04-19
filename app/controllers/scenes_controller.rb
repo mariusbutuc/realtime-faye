@@ -18,7 +18,17 @@ class ScenesController < ApplicationController
 
   def show
     redirect_to start_path unless session[:username]
-    @scene = Scene.find params[:id]
+    @scene            = Scene.find params[:id]
+    starter           = @scene.starter
+    first_character   = @scene.characters.first.nickname
+    # second_character  = @scene.characters.last.nickname
+    second_character  = '{{Character #2}}'
+
+    @title    = starter.title.html_safe
+    @content  = starter.content
+                .gsub('{{X}}', first_character)
+                .gsub('{{Y}}', second_character)
+                .html_safe
   end
 
   def new_line

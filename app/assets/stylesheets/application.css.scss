@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+.navbar {
+  font-family: 'Special Elite', "Courier New", Courier, monospace;
+}
+
 .content {
   background-color: #eee;
   padding: 20px;
@@ -24,6 +28,17 @@
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
-pre {
-  font-family: 'Special Elite', cursive;
+.scene_container {
+  font-family: "Special Elite", "Courier New", Courier, monospace;
+  h1, .lead {
+    font-family: "F25_Executive", "Courier New", Courier, monospace;
+  }
+  h1 {
+    text-align: center;
+    line-height: 130%;
+  }
+  p {
+    font-size: 18px;
+    line-height: 130%;
+  }
 }

@@ -4,15 +4,14 @@
   $(function() {
     // Subscribe to the public channel
     PrivatePub.subscribe("/scenes/#{@scene.id}", function(data) {
-      $('<p></p>').html(data.from + ': ' + data.msg).appendTo('#scene');
+      var line = '<em>' + data.from + ': </em>' + data.msg;
+      $('<p></p>').html(line).appendTo('#scene');
     });
   });
 
 .scene_container
-  %pre
-    Int. Dojo - Night
-  %pre
-    {{X}} is putting away a stack of wooden boards, straightening the pads, and tidying up the dojo after a long day of teaching karate. Suddenly, a noise makes {{X}} turn. It's {{Y}}, former prot&eacute;g&eacute;, and {{Y}} looks angry.
+  %h1= @title
+  %p.lead= @content
 
   #scene
 

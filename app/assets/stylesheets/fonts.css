@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'F25_Executive';
+  src: url('/assets/fonts/F25_Executive.eot');
+  src: local('☺'),
+        url('/assets/fonts/F25_Executive.woff') format('woff'),
+        url('/assets/fonts/F25_Executive.ttf')  format('truetype'),
+        url('/assets/fonts/F25_Executive.svg')  format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
