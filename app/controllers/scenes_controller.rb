@@ -8,12 +8,12 @@ class ScenesController < ApplicationController
     character = Character.find_by_nickname session[:username]
     if character
       @scene = character.scene
+      @title = @scene.starter.title
     else
       session.delete(:username)
       redirect_to start_path
       return
     end
-
   end
 
   def show
@@ -21,8 +21,7 @@ class ScenesController < ApplicationController
     @scene            = Scene.find params[:id]
     starter           = @scene.starter
     first_character   = @scene.characters.first.nickname
-    # second_character  = @scene.characters.last.nickname
-    second_character  = '{{Character #2}}'
+    second_character  = @scene.characters.last.nickname
 
     @title    = starter.title.html_safe
     @content  = starter.content
@@ -31,7 +30,7 @@ class ScenesController < ApplicationController
                 .html_safe
   end
 
-  def new_line
+  def drop_a_line
     @channel = "/scenes/#{params[:id]}"
     @message = { from: session[:username], msg: params[:line] }
 

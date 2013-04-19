@@ -5,7 +5,7 @@ RealtimeFaye::Application.routes.draw do
   post '/start' => 'sessions#create',         as: :start
 
   resources :scenes
-  post '/scenes/:id/new_line' => 'scenes#new_line', as: :new_line
+  post '/scenes/:id/drop_a_line' => 'scenes#drop_a_line', as: :drop_a_line
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
