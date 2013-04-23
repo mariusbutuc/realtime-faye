@@ -17,8 +17,15 @@ class ScenesController < ApplicationController
   end
 
   def show
-    redirect_to start_path unless session[:username]
+    unless session[:username]
+      redirect_to start_path
+      return
+    end
     @scene            = Scene.find params[:id]
+    unless @scene.characters.count == 2
+      redirect_to waiting_path
+      return
+    end
     starter           = @scene.starter
     first_character   = @scene.characters.first.nickname
     second_character  = @scene.characters.last.nickname
@@ -28,6 +35,25 @@ class ScenesController < ApplicationController
                 .gsub('{{X}}', first_character)
                 .gsub('{{Y}}', second_character)
                 .html_safe
+  end
+
+  def waiting
+    scene = Scene.find params[:id]
+    if scene.characters.count == 2
+      redirect_to scene_path
+    else
+      @join_url   = join_url  scene
+      @start_url  = scene_url scene
+    end
+
+
+  end
+
+  def join
+    #  get username, store in session
+    # find the scene we're invited to
+    # add as a second user
+    # enjoy!
   end
 
   def drop_a_line

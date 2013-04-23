@@ -1,0 +1,20 @@
+%h1 Waiting for your co-writer
+
+%p Ask him / her to join you at this url:
+
+%ul
+  %li= link_to @join_url, @join_url
+
+%hr/
+
+%p We heard you like them urlz, so we have one for you too:
+
+%ul
+  %li=  link_to @start_url, @start_url
+
+%p
+  But it takes two to Write the Scene... so you will keep getting back here untill your friend joins.
+
+  %br/
+
+  = "So what are you waiting for? #{link_to('Invite', @join_url)} your co-screenwriter friend already!".html_safe

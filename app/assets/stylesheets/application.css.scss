@@ -17,6 +17,7 @@
 }
 
 .content {
+  font-family: "Courier Prime", "Courier New", Courier, monospace;
   background-color: #eee;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
@@ -29,16 +30,12 @@
 }
 
 .scene_container {
-  font-family: "Special Elite", "Courier New", Courier, monospace;
-  h1, .lead {
-    font-family: "Courier Prime", "Courier New", Courier, monospace;
-  }
   h1 {
     text-align: center;
     line-height: 130%;
   }
   p {
-    font-size: 18px;
+    font-size: 12pt;
     line-height: 130%;
   }
 }

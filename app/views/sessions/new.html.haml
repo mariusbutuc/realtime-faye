@@ -3,4 +3,6 @@
   = label_tag :username, 'Who do you want to be?'
   .input-append
     = text_field_tag :username
+    - if @scene_id
+      = hidden_field_tag :scene_id, @scene_id
     = submit_tag 'Start the Scene!', class: 'btn'
