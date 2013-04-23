@@ -5,4 +5,6 @@
     = text_field_tag :username
     - if @scene_id
       = hidden_field_tag :scene_id, @scene_id
-    = submit_tag 'Start the Scene!', class: 'btn'
+      = submit_tag 'Join the Scene!', class: 'btn'
+    - else
+      = submit_tag 'Start the Scene!', class: 'btn'
