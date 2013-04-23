@@ -1,4 +1,5 @@
 class ScenesController < ApplicationController
+
   def index
     unless session[:username]
       redirect_to start_path
@@ -38,22 +39,15 @@ class ScenesController < ApplicationController
   end
 
   def waiting
-    scene = Scene.find params[:id]
+    @scene_id = params[:id]
+    scene = Scene.find @scene_id
+
     if scene.characters.count == 2
       redirect_to scene_path
     else
       @join_url   = join_url  scene
       @start_url  = scene_url scene
     end
-
-
-  end
-
-  def join
-    #  get username, store in session
-    # find the scene we're invited to
-    # add as a second user
-    # enjoy!
   end
 
   def drop_a_line
