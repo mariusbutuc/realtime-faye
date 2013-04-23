@@ -35,7 +35,7 @@ scene_starters = [
 
   {
     title: %q[Ext. Rooftop - Night],
-    content: %q[{{X}} stands alone, perched at the corner of the building, surveying the city below.  {{X}} hears a noise coming from behind, the faint flutter of a cape.  {{X}} turns to face Y, who is as silent as the night and seeking vengeance.]
+    content: %q[{{X}} stands alone, perched at the corner of the building, surveying the city below.  {{X}} hears a noise coming from behind, the faint flutter of a cape.  {{X}} turns to face {{Y}}, who is as silent as the night and seeking vengeance.]
   },
 
   {
@@ -45,17 +45,17 @@ scene_starters = [
 
   {
     title: %q[Ext. Rainforest - Day],
-    content: %q[{{X}} is leading {{Y}} cautiously through the hot and humid jungle.  X's machete hacks through foliage.  <br />They notice a small cave opening up ahead with odd markings.  {{X}} pulls out the map to confirm that this is the destination. <br />They enter the cave.]
+    content: %q[{{X}} is leading {{Y}} cautiously through the hot and humid jungle.  {{X}}'s machete hacks through foliage.  <br />They notice a small cave opening up ahead with odd markings.  {{X}} pulls out the map to confirm that this is the destination. <br />They enter the cave.]
   },
 
   {
     title: %q[Int. Saloon],
-    content: %q[{{X}} sits at the bar sipping on a bourbon.   The doors swing open; and standing at the bar's entrance is Y, the Sherriff of the town.]
+    content: %q[{{X}} sits at the bar sipping on a bourbon.   The doors swing open; and standing at the bar's entrance is {{Y}}, the Sherriff of the town.]
   },
 
   {
     title: %q[Int. Interrogation Room ],
-    content: %q[{{Y}} sits in handcuffs, underneath a blinding, hot spotlight.  {{X}} circles around the room, as sweat pours down Y's face.]
+    content: %q[{{Y}} sits in handcuffs, underneath a blinding, hot spotlight.  {{X}} circles around the room, as sweat pours down {{Y}}'s face.]
   },
 
   {
@@ -70,7 +70,7 @@ scene_starters = [
 
   {
     title: %q[Ext. Soccer Field],
-    content: %q[{{X}} and {{Y}} stand on the sidelines of a championship pee wee soccer game.  {{Y}} screams for a bad call.  X, frustrated by Y's incessant nagging, shoves Y.]
+    content: %q[{{X}} and {{Y}} stand on the sidelines of a championship pee wee soccer game.  {{Y}} screams for a bad call.  {{X}}, frustrated by {{Y}}'s incessant nagging, shoves {{Y}}.]
   },
 
   {
@@ -90,12 +90,12 @@ scene_starters = [
 
   {
     title: %q[Ext. Cottage],
-    content: %q[{{X}} sits upon the dock, wistfully hurling small stones into the lake. <br />{{Y}} slowly walks down the dock and sits beside X.]
+    content: %q[{{X}} sits upon the dock, wistfully hurling small stones into the lake. <br />{{Y}} slowly walks down the dock and sits beside {{X}}.]
   },
 
   {
     title: %q[Int. Future Prison],
-    content: %q[Robot model #X3014, given name: X, sits behind bars, waiting to be sent to Robot Death Row. <br />Suddenly, the sound of a prison door opens.  Into the cell walks, Y, Head RoboGuard.]
+    content: %q[Robot model #X3014, given name: {{X}}, sits behind bars, waiting to be sent to Robot Death Row. <br />Suddenly, the sound of a prison door opens.  Into the cell walks, {{Y}}, Head RoboGuard.]
   }
 ]
 
