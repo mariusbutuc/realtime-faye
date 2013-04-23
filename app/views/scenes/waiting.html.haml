@@ -1,3 +1,15 @@
+= subscribe_to "/scenes/#{@scene_id}/waiting"
+
+:javascript
+  $(function() {
+    PrivatePub.subscribe("/scenes/#{@scene_id}/waiting", function(data) {
+      if ( data.marius_says === 'refresh' )
+        {
+          location.reload();
+        }
+    });
+  });
+
 %h1 Waiting for your co-writer
 
 %p Ask him / her to join you at this url:
