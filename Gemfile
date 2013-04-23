@@ -17,6 +17,7 @@ gem 'faye'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'private_pub'
+gem 'ruby-progressbar'
 
 group :development do
   gem 'annotate'
