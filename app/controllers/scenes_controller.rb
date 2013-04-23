@@ -57,9 +57,9 @@ class ScenesController < ApplicationController
   end
 
   def drop_a_line
-    @channel = "/scenes/#{params[:id]}"
-    @message = { from: session[:username], msg: params[:line] }
+    channel = "/scenes/#{params[:id]}"
+    message = { from: character, msg: line }
 
-    PrivatePub.publish_to @channel, @message
+    PrivatePub.publish_to channel, message
   end
 end

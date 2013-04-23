@@ -3,3 +3,5 @@
   %ul.nav.pull-right
     %li
       %a= "Welcome to the chatroom, #{session[:username]}!"
+    %li
+      %a= link_to 'Logout', logout_path, method: :delete, confirm: 'Are you sure?'
