@@ -51,11 +51,20 @@ class ScenesController < ApplicationController
   end
 
   def drop_a_line
-    channel = "/scenes/#{params[:id]}"
-    character = Character.find_by_nickname session[:username]
-    line  = params[:line]
-    message = { from: character, msg: line }
+    # scene     = Scene.find params[:id]
+    nickname  = session[:username]
+    character = Character.find_by_nickname nickname
+    new_line  = params[:line]
 
-    PrivatePub.publish_to channel, message
+    # line = Line.new content: new_line
+    # line.character  = character
+    # line.scene      = scene
+
+    # if line.save!
+      channel = "/scenes/#{params[:id]}"
+      message = { from: nickname, msg: new_line }
+
+      PrivatePub.publish_to channel, message
+    # end
   end
 end
