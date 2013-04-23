@@ -7,6 +7,12 @@
       var line = '<em>' + data.from + ': </em>' + data.msg;
       $('<p></p>').html(line).appendTo('#scene');
     });
+    $('#line').on('keypress', function (e) {
+      if (e.which == 13) {
+        $('input[type=submit]', '#say-your-line').click();
+        return false;
+      }
+    });
   });
 
 .scene_container
@@ -15,18 +21,18 @@
 
   #scene
 
-  = form_tag drop_a_line_path, remote: true do
+  = form_tag drop_a_line_path, { id: 'say-your-line', remote: true } do
     .input-prepend.input-append
       .btn-group
         %button.btn.dropdown-toggle{ 'data-toggle' => 'dropdown' }
           Choose&hellip;
           %span.caret
         %ul.dropdown-menu
-          %li
+          %li.disabled
             %a Say
-          %li
+          %li.disabled
             %a Narrative
-          %li
+          %li.disabled
             %a Slugline
 
       = text_field_tag :line, nil, placeholder: 'What do you say?', class: 'span7'
