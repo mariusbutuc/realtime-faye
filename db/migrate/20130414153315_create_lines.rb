@@ -3,6 +3,7 @@ class CreateLines < ActiveRecord::Migration
     create_table :lines do |t|
       t.string      :content
       t.references  :character
+      t.references  :scene
 
       t.timestamps
     end
