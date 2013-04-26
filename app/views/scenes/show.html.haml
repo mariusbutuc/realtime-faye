@@ -4,11 +4,18 @@
   $(function() {
     // Subscribe to the public channel
     PrivatePub.subscribe("/scenes/#{@scene.id}", function(data) {
-      var line  = '<span class="character">' + data.from + '</span>';
-          line += '<span class="say">' + data.msg + '</span>';
-      $('<p></p>').html(line).appendTo('#scene');
-      $("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 0);
+      if ( data.hasOwnProperty('marius_says')) {
+        if ( data.marius_says === 'quitter' ) alert('Your co-writer just left the Scene!');
+      }
+      else {
+        var line  = '<span class="character">' + data.from + '</span>';
+            line += '<span class="say">' + data.msg + '</span>';
+        $('<p></p>').html(line).appendTo('#scene');
+        // scroll to the bottom of the page
+        $("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 0);
+      }
     });
+
     $('#line').on('keypress', function (e) {
       if (e.which == 13) {
         $('input[type=submit]', '#say-your-line').click();

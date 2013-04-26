@@ -3,10 +3,7 @@
 :javascript
   $(function() {
     PrivatePub.subscribe("/scenes/#{@scene_id}/waiting", function(data) {
-      if ( data.marius_says === 'refresh' )
-        {
-          location.reload();
-        }
+      if ( data.marius_says === 'refresh' ) location.reload();
     });
   });
 

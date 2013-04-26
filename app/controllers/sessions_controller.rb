@@ -34,6 +34,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:username)
+    PrivatePub.publish_to "/scenes/#{params[:scene_id]}", { marius_says: 'quitter' } if params[:scene_id]
     redirect_to root_url, notice: 'You have successfully logged out'
   end
 
