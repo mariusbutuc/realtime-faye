@@ -4,8 +4,9 @@
   $(function() {
     // Subscribe to the public channel
     PrivatePub.subscribe("/scenes/#{@scene.id}", function(data) {
-      var line = '<em>' + data.from + ': </em>' + data.msg;
-      $('<p></p>').html(line).appendTo('#scene');
+      var line  = '<span class="character">' + data.from + '</span>';
+          line += '<span class="say">' + data.msg + '</span>';
+      $('<p></p>').html(line).appendTo('#scene').scrollTop( 300 );
     });
     $('#line').on('keypress', function (e) {
       if (e.which == 13) {
