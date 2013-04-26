@@ -2,6 +2,6 @@
 - if session[:username]
   %ul.nav.pull-right
     %li
-      %a= "Welcome to the chatroom, #{session[:username]}!"
+      %a= "Welcome to the chatroom, #{session[:username].capitalize}!"
     %li
       = link_to 'End the Scene', logout_path, method: :delete, confirm: 'Are you sure you want to leave the Scene?'
