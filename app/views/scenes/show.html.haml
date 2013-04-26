@@ -6,7 +6,8 @@
     PrivatePub.subscribe("/scenes/#{@scene.id}", function(data) {
       var line  = '<span class="character">' + data.from + '</span>';
           line += '<span class="say">' + data.msg + '</span>';
-      $('<p></p>').html(line).appendTo('#scene').scrollTop( 300 );
+      $('<p></p>').html(line).appendTo('#scene');
+      $("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 0);
     });
     $('#line').on('keypress', function (e) {
       if (e.which == 13) {
