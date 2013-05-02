@@ -22,7 +22,6 @@ class Character < ActiveRecord::Base
   # private
 
   # def max_two_users_per_scene
-  #   binding.pry
   #   if self.scene.characters(:reload).count >= 3
   #     errors.add( :base, '2 Write the Scene, 3 is a crouwd' )
   #   end

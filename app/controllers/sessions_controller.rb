@@ -1,9 +1,15 @@
 class SessionsController < ApplicationController
   def new
-    @scene_id = params[:id] rescue nil
-    redirect_to scene_path @scene_id if session[:username]
+    if scene_id = params[:scene_id] # join
+      @scene = Scene.find scene_id
+      # continue scene
+      redirect_to scene_path @scene if session[:username]
+    end
   end
 
+  # TODO: Refactor to split in
+  #  - Session#create and
+  #  - Session#join
   def create
     nickname = params[:username].upcase
     session[:username] = nickname
@@ -34,7 +40,9 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:username)
-    PrivatePub.publish_to "/scenes/#{params[:scene_id]}", { marius_says: 'quitter' } if params[:scene_id]
+    if scene_id = params[:id]
+      PrivatePub.publish_to "/scenes/#{scene_id}", { marius_says: 'quitter' }
+    end
     redirect_to root_url, notice: 'You have successfully logged out'
   end
 
