@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130414153637) do
 
   create_table "lines", :force => true do |t|
     t.string   "content"
+    t.string   "kind"
     t.integer  "character_id"
     t.integer  "scene_id"
     t.datetime "created_at",   :null => false

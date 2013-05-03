@@ -36,6 +36,7 @@ class ScenesController < ApplicationController
                 .gsub('{{X}}', first_character)
                 .gsub('{{Y}}', second_character)
                 .html_safe
+    @line_kinds = Options['line_kind'].map{ |kind| [kind.capitalize, kind] }
   end
 
   def waiting
@@ -51,18 +52,18 @@ class ScenesController < ApplicationController
   end
 
   def drop_a_line
-    scene     = Scene.find params[:id]
-    nickname  = session[:username]
-    character = Character.find_by_nickname nickname
-    new_line  = params[:line]
+    scene         = Scene.find params[:id]
+    nickname      = session[:username]
+    character     = Character.find_by_nickname nickname
+    line_content  = params[:line_content]
+    line_kind     = params[:line_kind]
 
-    line = Line.new content: new_line
+    line = Line.new content: line_content, kind: line_kind
     line.character  = character
     line.scene      = scene
-
     if line.save!
       channel = "/scenes/#{params[:id]}"
-      message = { from: nickname, msg: new_line }
+      message = { from: nickname, msg: line_content, kind: line_kind }
 
       PrivatePub.publish_to channel, message
     end

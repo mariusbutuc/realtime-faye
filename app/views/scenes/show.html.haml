@@ -9,14 +9,14 @@
       }
       else {
         var line  = '<span class="character">' + data.from + '</span>';
-            line += '<span class="say">' + data.msg + '</span>';
-        $('<p></p>').html(line).appendTo('#scene');
+            line += '<span class="line">' + data.msg + '</span>';
+        $('<p class="' + data.kind + '"></p>').html(line).appendTo('#scene');
         // scroll to the bottom of the page
         $("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 0);
       }
     });
 
-    $('#line').on('keypress', function (e) {
+    $('#line_content').on('keypress', function (e) {
       if (e.which == 13) {
         $('input[type=submit]', '#say-your-line').click();
         return false;
@@ -31,18 +31,7 @@
   #scene
 
   = form_tag drop_a_line_path, { id: 'say-your-line', remote: true } do
-    .input-prepend.input-append
-      .btn-group
-        %button.btn.dropdown-toggle{ 'data-toggle' => 'dropdown' }
-          Choose&hellip;
-          %span.caret
-        %ul.dropdown-menu
-          %li.disabled
-            %a Say
-          %li.disabled
-            %a Narrative
-          %li.disabled
-            %a Slugline
-
-      = text_field_tag :line, nil, placeholder: 'What do you say?', class: 'span7'
+    = select_tag :line_kind, options_for_select( @line_kinds )
+    .input-append
+      = text_field_tag :line_content, nil, placeholder: 'What do you say?', class: 'span7'
       = submit_tag 'Send', disable_with: 'Sending…', class: 'btn'

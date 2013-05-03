@@ -41,13 +41,38 @@
 }
 
 #scene {
-  .character {
-    display: block;
-    padding-left: 18%;
+  .say {
+    .character {
+      text-transform: uppercase;
+      display: block;
+      padding-left: 38%;
+    }
+
+    .line {
+      padding-left: 22%;
+    }
   }
 
-  .say {
-    padding-left: 2%;
+  .narrative {
+    .character {
+      display: none;
+    }
+
+    .line {
+      padding-left: 10%;
+    }
   }
+
+  .cut-to {
+    .character {
+      display: none;
+    }
+
+    .line {
+      text-transform: uppercase;
+      padding-left: 10%;
+    }
+  }
+
 }
 
