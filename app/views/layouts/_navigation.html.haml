@@ -4,4 +4,4 @@
     %li
       %a= "Welcome to the chatroom, #{session[:username].capitalize}!"
     %li
-      = link_to 'End the Scene', end_scene_path(@scene.id) , method: :delete, confirm: 'Are you sure you want to leave the Scene?'
+      = link_to 'Log out', end_scene_path(@scene.id) , method: :delete, confirm: 'Are you sure you want to leave the Scene?'
