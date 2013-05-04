@@ -24,14 +24,16 @@
     });
   });
 
-.scene_container
+.scene_container.clearfix
   %h1= @title
   %p.lead= @content
 
   #scene
 
-  = form_tag drop_a_line_path, { id: 'say-your-line', remote: true } do
-    = select_tag :line_kind, options_for_select( @line_kinds )
-    .input-append
-      = text_field_tag :line_content, nil, placeholder: 'What do you say?', class: 'span7'
-      = submit_tag 'Send', disable_with: 'Sending…', class: 'btn'
+  = link_to 'End Scene', end_scene_path(@scene.id) , method: :delete, confirm: 'Are you sure you want to leave the Scene?', class: 'btn pull-right'
+
+= form_tag drop_a_line_path, { id: 'say-your-line', remote: true, class: 'clearfix' } do
+  = select_tag :line_kind, options_for_select( @line_kinds )
+  .input-append.pull-right
+    = text_field_tag :line_content, nil, placeholder: 'What do you say?', class: 'span7'
+    = submit_tag 'Send', disable_with: 'Sending…', class: 'btn'
