@@ -5,7 +5,7 @@
     // Subscribe to the public channel
     PrivatePub.subscribe("/scenes/#{@scene.id}", function(data) {
       if ( data.hasOwnProperty('marius_says')) {
-        if ( data.marius_says === 'quitter' ) alert('Your co-writer just left the Scene!');
+        if ( data.marius_says === 'quitter' && data.username != "#{session[:username]}" ) alert('Your co-writer just left the Scene!');
       }
       else {
         var line  = '<span class="character">' + data.from + '</span>';
@@ -21,6 +21,17 @@
         $('input[type=submit]', '#say-your-line').click();
         return false;
       }
+    });
+    $(window).unload(function() {
+      PrivateSub.fayeClient.publish(location.pathname, {text: "Quitting now"});
+    });
+  });
+
+  $(window).bind( 'beforeunload', function() {
+    $.ajax({
+      url:    "/scenes/#{@scene.id}/leave",
+      type:   'get',
+      async:  false
     });
   });
 

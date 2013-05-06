@@ -68,4 +68,9 @@ class ScenesController < ApplicationController
       PrivatePub.publish_to channel, message
     end
   end
+
+  def leave
+    PrivatePub.publish_to("/scenes/#{params[:id]}", { marius_says: 'quitter', username: session[:username] }) if params[:id]
+    render nothing: true
+  end
 end

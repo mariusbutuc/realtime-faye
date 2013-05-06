@@ -7,6 +7,7 @@ RealtimeFaye::Application.routes.draw do
   post    '/scenes/:id/drop_a_line' => 'scenes#drop_a_line',  as: :drop_a_line
   get     '/scenes/:id/waiting'     => 'scenes#waiting',      as: :waiting
   delete  '/scenes/:id/quit'        => 'sessions#destroy',    as: :end_scene
+  get     '/scenes/:id/leave'       => 'scenes#leave',        as: :leave
 
   root to: 'scenes#index'
 end

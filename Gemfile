@@ -18,6 +18,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'private_pub'
 gem 'ruby-progressbar'
+# gem 'therubyracer' # use node instead
 
 group :development do
   gem 'annotate'
